@@ -3,9 +3,7 @@
 </script>
 
 <template>
- <div class="bg-blue-500">
-   TESTE
-</div> 
+  <router-view />
 </template>
 
 <style scoped>
