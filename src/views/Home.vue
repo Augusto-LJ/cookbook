@@ -11,7 +11,7 @@ const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
         />
 
         <div class="flex justify-center gap-2 mt-2">
-            <router-link to="/" v-for="letter in letters">
+            <router-link :to="{name: 'byLetter', params: {letter}}" v-for="letter in letters">
                 {{ letter }}
             </router-link>
         </div>
