@@ -4,6 +4,6 @@
 
 <template>
     <div>
-        Meal List
+        By ingredient
     </div>
 </template>
