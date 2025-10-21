@@ -21,7 +21,18 @@ function searchMeals() {
                 @change="searchMeals"
         />
     </div>
-    <div>
-        <pre>{{meals}}</pre>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
+        <div v-for="meal in meals" class="bg-white shadow rounded-xl">
+            <img :src="meal.strMealThumb" :alt="meal.strMeal" class="rounded-t-xl w-full h-64 object-cover" />
+            <div class="px-3">
+                <h3 class="font-semibold">{{ meal.strMeal }}</h3>
+                <p class="mb-4">Lorem ipsum dolor sit</p>
+                <div class="flex items-center justify-between">
+                    <a :href="meal.strYoutube" target="_blank"
+                        class="px-3 py-2 mb-2 rounded border-2 border-red-600 bg-red-500 hover:bg-red-600 hover:text-white transition-colors"
+                        rel="noopener noreferrer">YouTube video</a>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
