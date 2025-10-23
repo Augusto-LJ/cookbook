@@ -1,14 +1,23 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import { useMealsStore } from '../stores/mealsStore.js';
+import { useRoute } from 'vue-router';
 
 const store = useMealsStore();
-const keyword = ref('');
+const route = useRoute();
+const keyword = ref<string>('');
 const meals = computed(() => store.searchedMeals);
 
 function searchMeals() {
-    store.searchMeals(keyword);
+    store.searchMeals(keyword.value);
 }
+
+onMounted(() => {
+    keyword.value = (route.params.name ?? '') as string;
+    
+    if (keyword.value)
+        store.searchMeals(keyword.value);
+});
 
 </script>
 

@@ -5,8 +5,8 @@ import axiosClient from "../axiosClient";
 export const useMealsStore = defineStore("meals", () => {
   let searchedMeals = reactive<any[]>([]);
 
-  async function searchMeals(keyword: { value: string }) {
-    const response = await axiosClient.get(`search.php?s=${keyword.value}`);
+  async function searchMeals(keyword: string) {
+    const response = await axiosClient.get(`search.php?s=${keyword}`);
     
     searchedMeals.splice(0, searchedMeals.length, ...(response.data.meals ?? []));
   }
