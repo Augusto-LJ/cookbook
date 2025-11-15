@@ -5,6 +5,7 @@ import axiosClient from "../axiosClient";
 export const useMealsStore = defineStore("meals", () => {
   let searchedMeals = reactive<any[]>([]);
   let searchedMealsByLetter = reactive<any[]>([]);
+  let searchedMealsByIngredient = reactive<any[]>([]);
 
   async function searchMeals(keyword: string) {
     const response = await axiosClient.get(`search.php?s=${keyword}`);
@@ -18,10 +19,23 @@ export const useMealsStore = defineStore("meals", () => {
     searchedMealsByLetter.splice(0, searchedMealsByLetter.length, ...(response.data.meals ?? []));
   };
 
+  async function searchMealsByIngredient(ingredient: any) {
+    const response = await axiosClient.get(`search.php?i=${ingredient}`);
+    console.log(response);
+    searchedMealsByIngredient.splice(0, searchedMealsByIngredient.length, ...(response.data.meals ?? []));
+  };
+
+  async function clearSearchedMeals() {
+    searchedMeals = [];
+  }
+
   return {
     searchedMeals,
     searchedMealsByLetter,
+    searchedMealsByIngredient,
     searchMeals,
-    searchMealsByLetter
+    searchMealsByLetter,
+    searchMealsByIngredient,
+    clearSearchedMeals
   };
 });

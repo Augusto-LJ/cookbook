@@ -2,7 +2,7 @@
 import { useRoute } from 'vue-router';
 import { useMealsStore } from '../stores/mealsStore.js';
 import { computed, onMounted, watch } from 'vue';
-import MealItem from '../components/MealItem.vue';
+import Meals from '../components/Meals.vue';
 
 const store = useMealsStore();
 const route = useRoute();
@@ -27,8 +27,6 @@ console.log(mealsByLetter);
                 {{ letter }}
             </router-link>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
-            <MealItem v-for="meal in mealsByLetter" :meal="meal"/>
-        </div>
+        <Meals :meals="mealsByLetter"/>
     </div>
 </template>
