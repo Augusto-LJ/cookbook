@@ -16,7 +16,7 @@ const { meal } = defineProps({
             </router-link>
             <div class="px-3">
                 <h3 class="font-semibold">{{ meal?.strMeal }}</h3>
-                <p class="mb-4">Lorem ipsum dolor sit</p>
+                <p class="mb-4">{{ meal.strArea }}</p>
                 <div class="flex items-center justify-between">
                     <YouTubeButton :href="meal?.strYoutube">YouTube</YouTubeButton>
                 </div>
