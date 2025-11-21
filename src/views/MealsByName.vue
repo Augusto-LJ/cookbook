@@ -15,10 +15,11 @@ function searchMeals() {
     } else {
         store.clearSearchedMeals();
     }
-
 }
 
 onMounted(() => {
+    store.clearSearchedMeals();
+
     keyword.value = (route.params.name ?? '') as string;
     if (keyword.value)
         store.searchMeals(keyword.value);
